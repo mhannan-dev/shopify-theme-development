@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "featured-collections": {
+      "type": "featured-collections",
+      "blocks": {
+        "block1": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage-collection-1"
+          }
+        },
+        "block2": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage-collection-2"
+          }
+        },
+        "block3": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage-collection-3"
+          }
+        },
+        "block4": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage-collection-4"
+          }
+        }
+      },
+      "block_order": ["block1", "block2", "block3", "block4"]
+    }
+  },
+  "order": ["featured-collections"]
+}

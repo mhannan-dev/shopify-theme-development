@@ -1,0 +1,32 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/styles.css -o ./assets/main.css --watch",
+    "build": "npx tailwindcss -i ./src/styles.css -o ./assets/main.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/dawn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Shopify/dawn/issues"
+  },
+  "homepage": "https://github.com/Shopify/dawn#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "flowbite": "^3.1.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "vue": "^3.5.16"
+  }
+}

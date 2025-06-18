@@ -1,0 +1,63 @@
+[
+  {
+    "name": "TimeCrafters",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_family",
+        "label": "Font family",
+        "options": [
+          { "value": "system-ui", "label": "System UI" },
+          { "value": "arial, sans-serif", "label": "Arial" },
+          { "value": "'Times New Roman', serif", "label": "Times New Roman" }
+        ],
+        "default": "system-ui"
+      },
+      {
+        "type": "range",
+        "id": "font_size",
+        "label": "Base font size (px)",
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_featured_collections",
+        "label": "Show featured collections on homepage",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "collections_to_show",
+        "label": "Number of collections to show",
+        "min": 1,
+        "max": 6,
+        "default": 4
+      }
+    ]
+  }
+]
