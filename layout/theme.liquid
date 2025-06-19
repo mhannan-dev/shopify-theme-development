@@ -2,16 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="theme-name" content="TimeCrafters" />
-    <title>{{ page_title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {{ page_title }}
+      -
+      {{ shop.name }}
+    </title>
     {{ content_for_header }}
     <link href="{{ 'tailwind.css' | asset_url }}" rel="stylesheet">
   </head>
-  <body class="bg-white text-gray-800">
-    {% render 'navbar' %}
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="{{  routes.root_url }}" class="text-xl font-bold">{{ shop.name }}</a>
+        <nav>
+          <a href="{{  routes.all_products_collection_url }}" class="mr-4 hover:text-blue-600">Shop</a>
+          <a href="{{  routes.cart_url }}" class="hover:text-blue-600">Cart</a>
+        </nav>
+      </div>
+    </header>
 
-    {{ content_for_layout }}
+    <!-- Main content -->
+    <main>
+      {{ content_for_layout }}
+    </main>
 
-   <script src="{{ 'flowbite.min.js' | asset_url }}" defer></script>
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-8 shadow-inner">
+      <div class="container mx-auto px-4 text-center text-gray-600">
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name }}. All rights reserved.
+      </div>
+    </footer>
+    <script src="{{ 'flowbite.min.js' | asset_url }}" defer></script>
   </body>
 </html>
