@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TimeCrafters - New Arrivals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#9ca3af",
+              accent: "#dc2626",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="bg-primary text-white text-center py-2 px-4">
+      <p class="text-sm">
+        Free shipping on all orders over ৳2000 |
+        <a href="#" class="underline font-medium">Shop Now</a>
+      </p>
+    </div>
+
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center space-x-4">
+            <button class="md:hidden text-gray-700" id="mobile-menu-button">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+            <a href="index.html" class="text-2xl font-bold text-primary">
+              <span class="text-primary">Time</span
+              ><span class="text-gray-800">Crafters</span>
+            </a>
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                placeholder="Search watches..."
+                class="pl-10 pr-4 py-2 border rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <a
+              href="account.html"
+              class="text-gray-700 hover:text-primary transition-colors"
+              ><i class="far fa-user text-xl"></i
+            ></a>
+            <a
+              href="wishlist.html"
+              class="text-gray-700 hover:text-primary transition-colors"
+              ><i class="far fa-heart text-xl"></i
+            ></a>
+            <a
+              href="cart.html"
+              class="text-gray-700 hover:text-primary transition-colors relative"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <nav
+          class="hidden md:flex justify-center space-x-8 text-gray-700 border-t pt-4"
+          id="main-nav"
+        >
+          <a
+            href="index.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Home</a
+          >
+          <a
+            href="new-arrivals.html"
+            class="hover:text-primary font-medium transition-colors"
+            >New Arrivals</a
+          >
+          <a
+            href="mens-watches.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Men's Watches</a
+          >
+          <a
+            href="womens-watches.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Women's Watches</a
+          >
+          <a
+            href="accessories.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Watch Accessories</a
+          >
+          <a
+            href="sale.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Sale</a
+          >
+          <a
+            href="blog.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Blog</a
+          >
+        </nav>
+      </div>
+
+      <div
+        class="md:hidden hidden bg-white py-2 px-4 border-t"
+        id="mobile-menu"
+      >
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="hover:text-primary">Home</a>
+          <a href="new-arrivals.html" class="hover:text-primary"
+            >New Arrivals</a
+          >
+          <a href="mens-watches.html" class="hover:text-primary"
+            >Men's Watches</a
+          >
+          <a href="womens-watches.html" class="hover:text-primary"
+            >Women's Watches</a
+          >
+          <a href="accessories.html" class="hover:text-primary"
+            >Watch Accessories</a
+          >
+          <a href="sale.html" class="hover:text-primary">Sale</a>
+          <a href="blog.html" class="hover:text-primary">Blog</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+    
+     <section class="relative bg-gray-800 text-white">
+        <img
+          src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+          alt="Men's Watches Collection"
+          class="w-full h-80 object-cover opacity-90"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-50"
+        >
+          <div class="px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">New Arrivals</h1>
+            <p class="text-xl">
+              Be the first to explore our latest collection of exquisite
+              timepieces.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="container mx-auto px-6 py-4 text-gray-600">
+        <ol class="flex items-center space-x-2">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><i class="fas fa-chevron-right text-xs"></i></li>
+          <li class="font-semibold text-primary">New Arrivals</li>
+        </ol>
+      </nav>
+
+      <section class="container mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row gap-8">
+          <aside class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-6">Filter by</h3>
+
+            <div class="mb-6">
+              <h4 class="font-medium mb-3 text-gray-700">Category</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li>
+                  <a href="#" class="hover:text-primary">Men's Watches (12)</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-primary"
+                    >Women's Watches (8)</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-primary">Smart Watches (3)</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-primary">Limited Editions (2)</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="font-medium mb-3 text-gray-700">Brand</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li><a href="#" class="hover:text-primary">Rolex (2)</a></li>
+                <li><a href="#" class="hover:text-primary">Omega (1)</a></li>
+                <li><a href="#" class="hover:text-primary">Seiko (3)</a></li>
+                <li><a href="#" class="hover:text-primary">Casio (4)</a></li>
+                <li><a href="#" class="hover:text-primary">Citizen (1)</a></li>
+              </ul>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="font-medium mb-3 text-gray-700">Price Range</h4>
+              <input type="range" min="0" max="50000" value="25000" class="w-full accent-primary" />
+              <div class="flex justify-between text-sm mt-2">
+                <span>৳0</span>
+                <span>৳50,000+</span>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="font-medium mb-3 text-gray-700">Movement</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li><input type="checkbox" id="automatic" class="mr-2 accent-primary" /><label for="automatic">Automatic</label></li>
+                <li><input type="checkbox" id="quartz" class="mr-2 accent-primary" /><label for="quartz">Quartz</label></li>
+                <li><input type="checkbox" id="mechanical" class="mr-2 accent-primary" /><label for="mechanical">Mechanical</label></li>
+              </ul>
+            </div>
+
+            <button class="bg-primary text-white w-full py-2 rounded-lg hover:bg-blue-700 transition">Apply Filters</button>
+          </aside>
+
+          <div class="w-full md:w-3/4">
+            <div class="flex justify-between items-center mb-6">
+              <p class="text-gray-700">Showing 1-9 of 25 results</p>
+              <div class="flex items-center space-x-2">
+                <label for="sort-by" class="text-gray-700">Sort by:</label>
+                <select id="sort-by" class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value="latest">Latest Arrivals</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="popularity">Popularity</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1577717903269-c98b67145217?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Elegant Chrono"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Elegant Chrono</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Classic automatic timepiece</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳18,000</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1587836176162-8695191c9889?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Minimalist Quartz"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Minimalist Quartz</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Sleek design, precise time</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳7,500</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1596700074218-a68133568c0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Adventure Diver"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Adventure Diver</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Robust and water-resistant</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳22,000</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1596215797305-64d5ed7019f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Sporty Smartwatch"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Sporty Smartwatch</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Stay connected on the go</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳10,500</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1587836176162-8695191c9889?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Classic Leather"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Classic Leather</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Timeless design, genuine leather</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳14,000</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <a href="#" class="block relative group">
+                  <img
+                    src="https://images.unsplash.com/photo-1622979201509-f6ef7d38e2d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Diamond Bezel"
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                </a>
+                <div class="p-5">
+                  <h3 class="font-semibold text-lg mb-2 truncate">
+                    <a href="#" class="hover:text-primary">Diamond Bezel</a>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3">Luxury with a touch of sparkle</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-primary">৳35,000</span>
+                    <button
+                      class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                      title="Add to Wishlist"
+                    >
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-center mt-12 space-x-2">
+              <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">1</a>
+              <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg transition-colors">2</a>
+              <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">3</a>
+              <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">Next <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">TimeCrafters</h3>
+            <p class="mb-4">
+              Crafting timeless pieces since 2010. We bring precision and style
+              to your wrist.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">Shop</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >All Watches</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >New Arrivals</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Best Sellers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Limited Editions</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">
+              Customer Service
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">FAQs</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Watch Care Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">About</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Our Story</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center text-sm">
+          <p>&copy; 2025 TimeCrafters. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

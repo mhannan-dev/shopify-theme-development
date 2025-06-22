@@ -1,51 +1,16 @@
-<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
-  <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-      {{ section.settings.heading }}
-    </h1>
-    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-      {{ section.settings.subheading }}
-    </p>
-    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-      {% if section.settings.hero_banner_button != blank %}
-        <a
-          href="#"
-          class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
-        >
-          {{ section.settings.hero_banner_button }}
-        </a>
-      {% endif %}
+<section class="relative bg-gray-800 text-white">
+  <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       alt="Luxury Watch Collection" 
+       class="w-full h-[500px] object-cover opacity-90">
+  <div class="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-40">
+    <div class="px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        Timeless Elegance
+      </h1>
+      <p class="text-xl mb-8">Premium watches crafted for perfection</p>
+      <a href="#" class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition inline-block">
+        Discover Collections
+      </a>
     </div>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Hero Banner",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Watch Collection"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth."
-    },
-    {
-      "type": "text",
-      "id": "hero_banner_button",
-      "label": "Button Text",
-      "default": "See more"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hero Banner"
-    }
-  ]
-}
-{% endschema %}

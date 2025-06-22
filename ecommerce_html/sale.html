@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sale - TimeCrafters Premium Watches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#9ca3af",
+              accent: "#dc2626",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Announcement Bar -->
+    <div class="bg-primary text-white text-center py-2 px-4">
+      <p class="text-sm">
+        🚀 Flash Sale: Extra 15% off already discounted items with code
+        <span class="font-bold">TIMESALE15</span> |
+        <a href="#sale-items" class="underline font-medium">Shop Now</a>
+      </p>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <!-- Top Header -->
+        <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center space-x-4">
+            <button
+              class="md:hidden text-gray-700 hover:text-primary"
+              id="mobile-menu-button"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+            <a href="index.html" class="text-2xl font-bold">
+              <span class="text-primary">Time</span
+              ><span class="text-gray-800">Crafters</span>
+            </a>
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                placeholder="Search sale items..."
+                class="pl-10 pr-4 py-2 border rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <i class="fas fa-search absolute left-3 top-3 text-secondary"></i>
+            </div>
+            <a
+              href="account.html"
+              class="text-gray-700 hover:text-primary transition-colors"
+              ><i class="far fa-user text-xl"></i
+            ></a>
+            <a
+              href="wishlist.html"
+              class="text-gray-700 hover:text-primary transition-colors"
+              ><i class="far fa-heart text-xl"></i
+            ></a>
+            <a
+              href="cart.html"
+              class="text-gray-700 hover:text-primary transition-colors relative"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav
+          class="hidden md:flex justify-center space-x-8 text-gray-700 border-t pt-4"
+        >
+          <a
+            href="index.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Home</a
+          >
+          <a
+            href="new-arrivals.html"
+            class="hover:text-primary font-medium transition-colors"
+            >New Arrivals</a
+          >
+          <a
+            href="mens-watches.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Men's Watches</a
+          >
+          <a
+            href="womens-watches.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Women's Watches</a
+          >
+          <a
+            href="accessories.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Watch Accessories</a
+          >
+          <a
+            href="sale.html"
+            class="text-primary font-medium border-b-2 border-primary pb-1"
+            >Sale</a
+          >
+          <a
+            href="blog.html"
+            class="hover:text-primary font-medium transition-colors"
+            >Blog</a
+          >
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white py-2 px-4 border-t"
+        id="mobile-menu"
+      >
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="hover:text-primary">Home</a>
+          <a href="new-arrivals.html" class="hover:text-primary"
+            >New Arrivals</a
+          >
+          <a href="mens-watches.html" class="hover:text-primary"
+            >Men's Watches</a
+          >
+          <a href="womens-watches.html" class="hover:text-primary"
+            >Women's Watches</a
+          >
+          <a href="accessories.html" class="hover:text-primary"
+            >Watch Accessories</a
+          >
+          <a href="sale.html" class="text-primary font-medium">Sale</a>
+          <a href="blog.html" class="hover:text-primary">Blog</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="relative bg-gray-900 text-white overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+          alt="Premium Men's Watches Collection"
+          class="w-full h-full object-cover object-center"
+          loading="eager"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/40"
+        ></div>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32"
+      >
+        <div class="text-center">
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight"
+          >
+            <span class="block">Men's Luxury Watches</span>
+            <span class="inline-block relative">
+              <span class="relative z-10">Collection</span>
+              <span
+                class="absolute bottom-0 left-0 w-full h-2 bg-primary/70 -rotate-1 transform origin-left"
+              ></span>
+            </span>
+          </h1>
+
+          <!-- Subheading -->
+          <p class="max-w-2xl mx-auto text-xl md:text-2xl text-gray-300 mb-10">
+            Precision crafted timepieces that define elegance and performance
+          </p>
+
+          <!-- Countdown timer with improved styling -->
+          <div class="flex justify-center space-x-3 sm:space-x-4">
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 sm:px-6 sm:py-4 border border-white/10 hover:border-primary/50 transition-all duration-300"
+            >
+              <span
+                class="font-bold block text-3xl sm:text-4xl tracking-tight"
+                id="countdown-days"
+                >03</span
+              >
+              <span class="text-sm sm:text-base text-gray-300">Days</span>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 sm:px-6 sm:py-4 border border-white/10 hover:border-primary/50 transition-all duration-300"
+            >
+              <span
+                class="font-bold block text-3xl sm:text-4xl tracking-tight"
+                id="countdown-hours"
+                >12</span
+              >
+              <span class="text-sm sm:text-base text-gray-300">Hours</span>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 sm:px-6 sm:py-4 border border-white/10 hover:border-primary/50 transition-all duration-300"
+            >
+              <span
+                class="font-bold block text-3xl sm:text-4xl tracking-tight"
+                id="countdown-minutes"
+                >45</span
+              >
+              <span class="text-sm sm:text-base text-gray-300">Minutes</span>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="mt-12">
+            <a
+              href="#sale-items"
+              class="inline-flex items-center px-8 py-3 sm:px-10 sm:py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/40"
+            >
+              Shop the Sale
+              <svg
+                class="ml-2 -mr-1 w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sale Categories -->
+    <section class="container mx-auto px-6 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <a
+          href="#men-sale"
+          class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow hover:border-primary hover:border"
+        >
+          <div class="text-4xl text-primary mb-3">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 class="font-bold">Men's Watches</h3>
+          <p class="text-sm text-secondary mt-1">Up to 45% off</p>
+        </a>
+        <a
+          href="#women-sale"
+          class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow hover:border-primary hover:border"
+        >
+          <div class="text-4xl text-primary mb-3">
+            <i class="far fa-clock"></i>
+          </div>
+          <h3 class="font-bold">Women's Watches</h3>
+          <p class="text-sm text-secondary mt-1">Up to 50% off</p>
+        </a>
+        <a
+          href="#luxury-sale"
+          class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow hover:border-primary hover:border"
+        >
+          <div class="text-4xl text-primary mb-3">
+            <i class="fas fa-crown"></i>
+          </div>
+          <h3 class="font-bold">Luxury Watches</h3>
+          <p class="text-sm text-secondary mt-1">Up to 35% off</p>
+        </a>
+        <a
+          href="#accessories-sale"
+          class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow hover:border-primary hover:border"
+        >
+          <div class="text-4xl text-primary mb-3">
+            <i class="fas fa-watch"></i>
+          </div>
+          <h3 class="font-bold">Accessories</h3>
+          <p class="text-sm text-secondary mt-1">Up to 60% off</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Sale Items -->
+    <section class="container mx-auto px-6 py-8" id="sale-items">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-800">All Sale Items</h2>
+        <div class="flex items-center">
+          <span class="mr-2 text-secondary">Sort by:</span>
+          <select
+            class="border rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-primary text-gray-700"
+          >
+            <option>Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Discount %</option>
+            <option>Newest Arrivals</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <!-- Sale Item 1 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Chronograph Pro"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              45% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Chronograph Pro
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="text-secondary text-sm">(28)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳8,250</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳15,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 2 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Elegance Silver"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              50% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Elegance Silver
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(15)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳6,500</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳13,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 3 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1526045431048-f857369baa09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Diver's Classic"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              40% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Diver's Classic
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(42)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳10,200</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳17,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 4 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Minimalist Black"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              35% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Minimalist Black
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(36)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳7,800</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳12,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 5 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Smart Watch Pro"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              30% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Smart Watch Pro
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(87)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳9,100</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳13,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 6 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1585123388860-7f7b4dd4d3e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Luxury Gold"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              25% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">Luxury Gold</h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(23)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳18,750</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳25,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 7 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Classic Leather"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              40% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">
+              Classic Leather
+            </h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(19)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳6,600</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳11,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Sale Item 8 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group border border-transparent hover:border-primary"
+        >
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1518134346374-184f9d21cea0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Sport Edition"
+              class="w-full h-64 object-cover"
+            />
+            <span
+              class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full"
+            >
+              50% OFF
+            </span>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg mb-1 text-gray-800">Sport Edition</h3>
+            <div class="flex items-center mb-2">
+              <div class="text-yellow-400 mr-1 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-secondary text-sm">(54)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-primary">৳5,500</span>
+              <span class="text-sm text-secondary line-through ml-2"
+                >৳11,000</span
+              >
+            </div>
+            <button
+              class="mt-4 w-full bg-primary hover:bg-blue-800 text-white py-2 rounded-lg transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="mt-12 flex justify-center">
+        <nav class="flex items-center space-x-2">
+          <a
+            href="#"
+            class="px-3 py-1 rounded-lg border border-secondary hover:bg-gray-100 text-gray-700"
+            >&laquo;</a
+          >
+          <a href="#" class="px-3 py-1 rounded-lg border bg-primary text-white"
+            >1</a
+          >
+          <a
+            href="#"
+            class="px-3 py-1 rounded-lg border border-secondary hover:bg-gray-100 text-gray-700"
+            >2</a
+          >
+          <a
+            href="#"
+            class="px-3 py-1 rounded-lg border border-secondary hover:bg-gray-100 text-gray-700"
+            >3</a
+          >
+          <a
+            href="#"
+            class="px-3 py-1 rounded-lg border border-secondary hover:bg-gray-100 text-gray-700"
+            >&raquo;</a
+          >
+        </nav>
+      </div>
+    </section>
+
+    <!-- Sale Benefits -->
+    <section class="bg-gray-100 py-12 mt-8">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">
+          Why Shop Our Sale?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow border border-transparent hover:border-primary"
+          >
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="font-bold mb-2 text-gray-800">Authentic Watches</h3>
+            <p class="text-secondary">
+              All sale items are 100% authentic with original manufacturer
+              warranties.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow border border-transparent hover:border-primary"
+          >
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3 class="font-bold mb-2 text-gray-800">Free Shipping</h3>
+            <p class="text-secondary">
+              Enjoy free express shipping on all sale orders over ৳2000.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow border border-transparent hover:border-primary"
+          >
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-undo"></i>
+            </div>
+            <h3 class="font-bold mb-2 text-gray-800">Easy Returns</h3>
+            <p class="text-secondary">
+              30-day return policy applies to all sale items.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">TimeCrafters</h3>
+            <p class="mb-4 text-secondary">
+              Crafting timeless pieces since 2010. We bring precision and style
+              to your wrist.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-secondary hover:text-white transition-colors"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="text-secondary hover:text-white transition-colors"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="text-secondary hover:text-white transition-colors"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">Shop</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="new-arrivals.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >New Arrivals</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mens-watches.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Men's Watches</a
+                >
+              </li>
+              <li>
+                <a
+                  href="womens-watches.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Women's Watches</a
+                >
+              </li>
+              <li>
+                <a
+                  href="accessories.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Watch Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">
+              Customer Service
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="faq.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >FAQs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="shipping.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li>
+                <a
+                  href="warranty.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Warranty</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="about.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="blog.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="careers.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition-colors text-secondary"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 text-center text-sm text-secondary"
+        >
+          <p>&copy; 2025 TimeCrafters. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+
+      // Countdown timer (3 days from now)
+      function updateCountdown() {
+        const now = new Date();
+        const endDate = new Date();
+        endDate.setDate(now.getDate() + 3);
+
+        const diff = endDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("countdown-days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("countdown-hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("countdown-minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+      }
+
+      // Update countdown every minute
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    </script>
+  </body>
+</html>

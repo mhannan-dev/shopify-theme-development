@@ -1,125 +1,66 @@
-{% schema %}
-{
-  "name": "Featured Collections",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Shop Collections"
-    },
-    {
-      "type": "range",
-      "id": "collections_to_show",
-      "min": 2,
-      "max": 12,
-      "step": 1,
-      "label": "Collections to show",
-      "default": 4
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "label": "Layout",
-      "options": [
-        { "value": "grid", "label": "Grid" },
-        { "value": "carousel", "label": "Carousel" }
-      ],
-      "default": "grid"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Featured Collections",
-      "blocks": [
-        { "type": "collection" },
-        { "type": "collection" },
-        { "type": "collection" },
-        { "type": "collection" }
-      ]
-    }
-  ]
-}
-{% endschema %}
-
-{% liquid
-  if section.blocks.size > 0
-    assign collections_count = section.blocks.size
-  else
-    assign collections_count = section.settings.collections_to_show
-  endif
-
-  case collections_count
-    when 2
-      assign grid_class = 'md:grid-cols-2'
-    when 3
-      assign grid_class = 'md:grid-cols-3'
-    when 4, 5, 6
-      assign grid_class = 'md:grid-cols-2 lg:grid-cols-4'
-    else
-      assign grid_class = 'md:grid-cols-2 lg:grid-cols-4'
-  endcase
-%}
-
-<div class="container mx-auto px-4 py-12">
-  {% if section.settings.heading != blank %}
-    <h2 class="text-3xl font-bold text-center mb-8">{{ section.settings.heading }}</h2>
-  {% endif %}
-
-  {% if section.settings.layout == 'carousel' %}
-    <!-- Carousel Layout with Static Images -->
-    <div class="relative overflow-hidden">
-      <div class="flex space-x-4 pb-4 overflow-x-auto snap-x snap-mandatory">
-        {% for i in (1..section.settings.collections_to_show) %}
-          <div class="snap-start flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4 px-2">
-            <div class="border rounded-xl shadow p-4 text-center">
-              <img
-                src="{{ 'watch_' | append: i | append: '.jpg' | asset_url }}"
-                alt="Watch Model {{ i }}"
-                class="w-full h-48 object-cover rounded-md mb-2"
-                loading="lazy"
-                width="200"
-                height="200"
-              >
-              <h3 class="font-semibold text-lg">Watch Model {{ i }}</h3>
-              <p class="text-sm text-gray-600">৳{{ 2000 | plus: i | times: 10 }}</p>
-            </div>
-          </div>
-        {% endfor %}
+<!-- Featured Categories -->
+<section class="container mx-auto px-6 py-16">
+  <h2 class="text-3xl font-semibold mb-12 text-center">Our Collections</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <a
+      href="#"
+      class="group relative overflow-hidden rounded-lg shadow-md h-64 hover:shadow-xl transition-shadow"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1526045431048-f857369baa09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+        alt="Men's Watches"
+        class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="100%" height="auto"
+      >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition"
+      >
+        <h3 class="text-white text-2xl font-bold">Men's Collection</h3>
       </div>
-    </div>
-  {% else %}
-    <!-- Grid Layout -->
-    <div class="grid grid-cols-1 gap-6 {{ grid_class }}">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks limit: section.settings.collections_to_show %}
-          {% assign collection = collections[block.settings.collection] %}
-          <div {{ block.shopify_attributes }}>
-            {% if collection %}
-              {% render 'collection-card', collection: collection %}
-            {% else %}
-              {% render 'placeholder-collection-card' %}
-            {% endif %}
-          </div>
-        {% endfor %}
-      {% else %}
-        {% for i in (1..section.settings.collections_to_show) %}
-          {% render 'placeholder-collection-card', index: i %}
-        {% endfor %}
-      {% endif %}
-    </div>
-  {% endif %}
-</div>
+    </a>
+    <a
+      href="#"
+      class="group relative overflow-hidden rounded-lg shadow-md h-64 hover:shadow-xl transition-shadow"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+        alt="Women's Watches"
+        class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="100%" height="auto"
+      >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition"
+      >
+        <h3 class="text-white text-2xl font-bold">Women's Collection</h3>
+      </div>
+    </a>
+    <a
+      href="#"
+      class="group relative overflow-hidden rounded-lg shadow-md h-64 hover:shadow-xl transition-shadow"
+    >
+      <img
+        src="../assets/"
+        alt="Luxury Watches"
+        class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="100%" height="auto"
+      >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition"
+      >
+        <h3 class="text-white text-2xl font-bold">Luxury Series</h3>
+      </div>
+    </a>
+    <a
+      href="#"
+      class="group relative overflow-hidden rounded-lg shadow-md h-64 hover:shadow-xl transition-shadow"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+        alt="Smart Watches"
+        class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="100%" height="auto"
+      >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition"
+      >
+        <h3 class="text-white text-2xl font-bold">Smart Watches</h3>
+      </div>
+    </a>
+  </div>
+</section>
