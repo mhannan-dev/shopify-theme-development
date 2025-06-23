@@ -25,7 +25,7 @@
         <button class="md:hidden text-gray-700" id="mobile-menu-button">
           <i class="fas fa-bars text-xl"></i>
         </button>
-        <a href="{{  routes.base_url }}" class="text-2xl font-bold text-primary">
+        <a href="{{ routes.root_url }}" class="text-2xl font-bold text-primary">
           <span class="text-primary">Time</span><span class="text-gray-800">Crafters</span>
         </a>
       </div>
@@ -39,13 +39,13 @@
           >
           <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </div>
-        <a href="account.html" class="text-gray-700 hover:text-primary transition-colors"
+        <a href="/account" class="text-gray-700 hover:text-primary transition-colors"
           ><i class="far fa-user text-xl"></i
         ></a>
-        <a href="wishlist.html" class="text-gray-700 hover:text-primary transition-colors"
+        <a href="{{ pages['wishlist'].url }}" class="text-gray-700 hover:text-primary transition-colors"
           ><i class="far fa-heart text-xl"></i
         ></a>
-        <a href="{{  routes.cart_url }}" class="text-gray-700 hover:text-primary transition-colors relative">
+        <a href="{{ routes.cart_url }}" class="text-gray-700 hover:text-primary transition-colors relative">
           <i class="fas fa-shopping-cart text-xl"></i>
           <span class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
             >3</span
@@ -83,13 +83,13 @@
   <!-- Mobile Menu -->
   <div class="md:hidden hidden bg-white py-2 px-4 border-t" id="mobile-menu" data-nav>
     <div class="flex flex-col space-y-3">
-      <a href="index.html" class="hover:text-primary">Home</a>
-      <a href="new-arrivals.html" class="hover:text-primary">New Arrivals</a>
-      <a href="mens-watches.html" class="hover:text-primary">Men's Watches</a>
-      <a href="womens-watches.html" class="hover:text-primary">Women's Watches</a>
-      <a href="accessories.html" class="hover:text-primary">Watch Accessories</a>
-      <a href="sale.html" class="hover:text-primary">Sale</a>
-      <a href="blog.html" class="hover:text-primary">Blog</a>
+      <a href="{{ routes.root_url }}" class="hover:text-primary">Home</a>
+      <a href="{{ pages['new-arrivals'].url }}" class="hover:text-primary">New Arrivals</a>
+      <a href="{{ pages['mens-watches'].url }}" class="hover:text-primary">Men's Watches</a>
+      <a href="{{ pages['womens-watches'].url }}" class="hover:text-primary">Women's Watches</a>
+      <a href="{{ pages['accessories'].url }}" class="hover:text-primary">Watch Accessories</a>
+      <a href="{{ pages['sale'].url }}" class="hover:text-primary">Sale</a>
+      <a href="{{ blogs['news'].url }}" class="hover:text-primary">Blog</a>
     </div>
   </div>
 </header>
