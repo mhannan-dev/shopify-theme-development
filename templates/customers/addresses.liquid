@@ -16,7 +16,42 @@
       <div class="bg-white rounded-lg p-6">
         {% assign address = customer.addresses.first %}
         <!-- Address Form Section -->
-        <div x-data="{ showAddressForm: true }">
+        <div
+          x-data="
+            {
+              showAddressForm: true,
+              init() {
+                // Initialize country/province selector
+                this.$nextTick(() => {
+                  const countrySelector = new Shopify.CountryProvinceSelector(
+                    'AddressCountry',
+                    'AddressProvince',
+                    {
+                      hideElement: 'AddressProvinceContainer'
+                    }
+                  );
+
+                  // Set saved values after initialization
+                  const countrySelect = this.$refs.countrySelect;
+                  const provinceSelect = this.$refs.provinceSelect;
+
+                  if (countrySelect.dataset.default) {
+                    countrySelect.value = countrySelect.dataset.default;
+                    // Trigger change event to update provinces
+                    countrySelect.dispatchEvent(new Event('change'));
+
+                    // Small delay to ensure provinces are loaded
+                    setTimeout(() => {
+                      if (provinceSelect.dataset.default) {
+                        provinceSelect.value = provinceSelect.dataset.default;
+                      }
+                    }, 100);
+                  }
+                });
+              }
+            }
+          "
+        >
           <!-- Success Message -->
           {% if form.posted_successfully? %}
             <div
@@ -34,14 +69,18 @@
           <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
             <div class="flex justify-between items-center mb-4">
               <h2 class="text-xl font-semibold">Update address</h2>
-              <button @click="showAddressForm = !showAddressForm" class="text-gray-500 hover:text-gray-700">
-                <span x-text="showAddressForm ? 'Hide' : 'Show'"></span> Form
-              </button>
+              <button
+                @click="showAddressForm = !showAddressForm"
+                class="text-gray-500 hover:text-gray-700"
+                x-text="showAddressForm ? 'Hide Form' : 'Show Form'"
+              ></button>
             </div>
 
-            {% form 'customer_address', address %}
+            {% form 'customer_address', address, class: 'address-form' %}
+              <input type="hidden" name="return_to" value="{{ canonical_url }}">
+
               <div class="space-y-4" x-show="showAddressForm" x-transition>
-                <!-- First Row - Name Fields -->
+                <!-- Name Fields -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="AddressFirstName" class="block text-sm font-medium text-gray-700 mb-1"
@@ -54,6 +93,7 @@
                       value="{{ address.first_name }}"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
+                      required
                     >
                   </div>
 
@@ -66,6 +106,7 @@
                       value="{{ address.last_name }}"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
+                      required
                     >
                   </div>
                 </div>
@@ -94,6 +135,7 @@
                       value="{{ address.address1 }}"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
+                      required
                     >
                   </div>
 
@@ -121,10 +163,60 @@
                       value="{{ address.city }}"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
+                      required
                     >
                   </div>
 
-                  <div>
+                  <div
+                    x-data="
+                      {
+                        showAddressForm: true,
+                        init() {
+                          this.$nextTick(() => {
+                            // Initialize the selector
+                            const selector = new Shopify.CountryProvinceSelector(
+                              'AddressCountry',
+                              'AddressProvince',
+                              {
+                                hideElement: 'AddressProvinceContainer'
+                              }
+                            );
+
+                            // Get the saved country value
+                            const savedCountry = '{{ address.country }}';
+                            const countrySelect = this.$refs.countrySelect;
+
+                            // Set the country value and trigger change
+                            if (savedCountry) {
+                              // Wait for the options to be populated
+                              setTimeout(() => {
+                                // Find the matching option (case-insensitive)
+                                const options = Array.from(countrySelect.options);
+                                const matchingOption = options.find(opt =>
+                                  opt.text.toLowerCase() === savedCountry.toLowerCase()
+                                );
+
+                                if (matchingOption) {
+                                  countrySelect.value = matchingOption.value;
+                                  // Trigger change event to update provinces
+                                  countrySelect.dispatchEvent(new Event('change'));
+
+                                  // Set province after a small delay
+                                  setTimeout(() => {
+                                    const provinceSelect = this.$refs.provinceSelect;
+                                    const savedProvince = '{{ address.province }}';
+                                    if (provinceSelect && savedProvince) {
+                                      provinceSelect.value = savedProvince;
+                                    }
+                                  }, 100);
+                                }
+                              }, 200);
+                            }
+                          });
+                        }
+                      }
+                    "
+                  >
                     <label for="AddressCountry" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
                     <select
                       id="AddressCountry"
@@ -133,6 +225,7 @@
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
                       x-ref="countrySelect"
+                      required
                     >
                       {{ all_country_option_tags }}
                     </select>
@@ -162,6 +255,7 @@
                       value="{{ address.zip }}"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md"
                       x-bind:disabled="!showAddressForm"
+                      required
                     >
                   </div>
 
@@ -222,25 +316,42 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Initialize country/province selector
-    const countrySelect = document.getElementById('AddressCountry');
-    const provinceContainer = document.getElementById('AddressProvinceContainer');
-    const provinceSelect = document.getElementById('AddressProvince');
+    // Handle form submission with AJAX to prevent page reload
+    const addressForm = document.querySelector('.address-form');
 
-    if (countrySelect && provinceContainer && provinceSelect) {
-      new Shopify.CountryProvinceSelector('AddressCountry', 'AddressProvince', {
-        hideElement: 'AddressProvinceContainer',
+    if (addressForm) {
+      addressForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const submitButton = this.querySelector('[type="submit"]');
+
+        try {
+          submitButton.disabled = true;
+          submitButton.classList.add('opacity-50');
+
+          const response = await fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+          });
+
+          if (response.ok) {
+            // Reload the page to show updated data and success message
+            window.location.reload();
+          } else {
+            throw new Error('Failed to update address');
+          }
+        } catch (error) {
+          console.error(error);
+          alert('Error updating address. Please try again.');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.classList.remove('opacity-50');
+        }
       });
     }
-
-    // Alpine.js component for address management
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('addressForm', () => ({
-        showAddressForm: true,
-        init() {
-          // You can add any initialization logic here
-        },
-      }));
-    });
   });
 </script>
