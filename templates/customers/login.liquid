@@ -1,83 +1,115 @@
 {% layout 'theme' %}
 
-<div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-  <div class="bg-primary text-white py-4 px-6">
-    <h1 class="text-xl font-bold">Welcome Back</h1>
-    <p class="text-sm opacity-90">Sign in to your TimeCrafters account</p>
+<section class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden my-8 md:my-10">
+  <!-- Header -->
+  <div class="bg-primary py-4 px-6">
+    <h1 class="text-xl font-bold text-blue-500">Welcome Back</h1>
+    <p class="text-sm opacity-90 text-dark-600">Sign in to your TimeCrafters account</p>
   </div>
 
+  <!-- Login Form -->
   <div class="p-6">
-    <form id="login-form">
+    {% form 'customer_login' %}
+      {% if form.errors %}
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">{{ form.errors | default_errors }}</h3>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Email Field -->
       <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+        <label for="customer_email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
         <input
           type="email"
-          id="email"
-          name="email"
+          name="customer[email]"
+          id="customer_email"
           required
           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           placeholder="your@email.com"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
         >
       </div>
 
+      <!-- Password Field -->
       <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-        <div class="relative">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="••••••••"
-          >
-          <button type="button" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600" id="toggle-password">
-            <i class="far fa-eye"></i>
-          </button>
-        </div>
+        <label for="customer_password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="customer_password"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="••••••••"
+          autocomplete="current-password"
+        >
         <div class="flex justify-end mt-1">
           <a href="{{ routes.account_recover_url }}" class="text-sm text-primary hover:underline">Forgot password?</a>
         </div>
       </div>
 
+      <!-- Submit Button -->
       <div class="mb-4">
         <button
           type="submit"
-          class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+          class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors font-medium"
         >
           Sign In
         </button>
       </div>
+    {% endform %}
 
-      <div class="flex items-center mb-6">
-        <div class="flex-1 border-t border-gray-300"></div>
-        <span class="px-3 text-gray-500 text-sm">OR</span>
-        <div class="flex-1 border-t border-gray-300"></div>
-      </div>
+    <!-- Social Login Divider -->
+    <div class="flex items-center mb-6">
+      <div class="flex-1 border-t border-gray-300"></div>
+      <span class="px-3 text-gray-500 text-sm">OR</span>
+      <div class="flex-1 border-t border-gray-300"></div>
+    </div>
 
-      <div class="space-y-3">
-        <a
-          href="#"
-          class="flex items-center justify-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg transition-colors"
+    <!-- Social Login Buttons -->
+    <div class="space-y-3">
+      <a
+        href="/apps/login-with-google"
+        class="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.766 12.2764C23.766 11.4607 23.6999 10.6406 23.5588 9.83807H12.24V14.4591H18.7217C18.4528 15.9494 17.5885 17.2678 16.323 18.1056V21.1039H20.19C22.4608 19.0139 23.766 15.9274 23.766 12.2764Z" fill="#4285F4"/>
+          <path d="M12.24 24C15.4764 24 18.2058 22.9383 20.1944 21.1039L16.3274 18.1055C15.2516 18.8375 13.8626 19.2519 12.2444 19.2519C9.11376 19.2519 6.45934 17.1399 5.50693 14.3003H1.51648V17.3912C3.55359 21.4434 7.70278 24 12.24 24Z" fill="#34A853"/>
+          <path d="M5.50253 14.3003C5.00011 12.8099 5.00011 11.1961 5.50253 9.70575V6.61481H1.51649C-0.18551 10.0056 -0.18551 14.0004 1.51649 17.3912L5.50253 14.3003Z" fill="#FBBC04"/>
+          <path d="M12.24 4.74966C13.9508 4.7232 15.6043 5.36697 16.8433 6.54867L20.2694 3.12262C18.1 1.0855 15.2207 -0.034466 12.24 0.000808666C7.70277 0.000808666 3.55359 2.55737 1.51648 6.61481L5.50252 9.70575C6.45052 6.86173 9.10935 4.74966 12.24 4.74966Z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </a>
+
+      <a
+        href="/apps/login-with-facebook"
+        class="flex items-center justify-center gap-2 bg-[#1877F2] text-white py-2 px-4 rounded-lg hover:bg-[#166FE5] transition-colors"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.891H13.563V21.878C18.343 21.128 22 16.991 22 12Z"/>
+        </svg>
+        Continue with Facebook
+      </a>
+    </div>
+
+    <!-- Registration Section -->
+    <div class="mt-6 text-center">
+      <p class="text-sm text-gray-600">
+        New to TimeCrafters?
+        <a href="{{ routes.account_register_url }}" class="text-primary font-medium hover:underline"
+          >Create an account</a
         >
-          <i class="fab fa-google text-red-500"></i>
-          <span>Continue with Google</span>
-        </a>
-        <a
-          href="#"
-          class="flex items-center justify-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg transition-colors"
-        >
-          <i class="fab fa-facebook-f text-blue-600"></i>
-          <span>Continue with Facebook</span>
-        </a>
-      </div>
-    </form>
+      </p>
+    </div>
   </div>
-
-  <div class="bg-gray-50 px-6 py-4 text-center border-t">
-    <p class="text-sm text-gray-600">
-      Don't have an account?
-      <a href="{{ routes.account_register_url }}" class="text-primary font-medium hover:underline">Create one</a>
-    </p>
-  </div>
-</div>
+</section>

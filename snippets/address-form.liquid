@@ -1,0 +1,338 @@
+{% comment %}
+  Snippet: address-form.liquid
+  Description: Renders a reusable address form for both new and existing addresses.
+  Uses Alpine.js for dynamic country/province dropdowns.
+
+  Parameters:
+  - form: The Liquid form object (e.g., customer.new_address, or the form object for an existing address).
+          This provides access to form.errors, form.posted_successfully?, and pre-filled field values.
+  - address_object: The actual address Liquid object if editing an existing address.
+                    Used for setting initial dropdown values and unique IDs.
+                    If adding a new address, pass 'new' or a unique string.
+  - cancel_url: The URL to navigate to when the cancel button is clicked.
+  - submit_text: The text for the submit button (e.g., "Add Address", "Update Address").
+{% endcomment %}
+
+{% comment %} Assign a unique ID suffix to prevent ID conflicts if multiple forms are on the same page {% endcomment %}
+{% liquid
+  assign form_id = ''
+  if address_object == 'new'
+    assign form_id = 'new'
+  elsif address_object and address_object.id
+    assign form_id = address_object.id
+  else
+    assign form_id = 'default' # Fallback for single forms not explicitly passed 'new' or an ID
+  endif
+
+  # Capture all shop countries as JSON for Alpine.js
+  assign all_countries_json = shop.countries | json
+%}
+
+<div
+  x-data="
+    {
+        allCountries: {{ all_countries_json | escape }}, {# Escape the JSON to prevent issues with quotes #}
+        selectedCountry: '{{ form.country | escape }}', {# Pre-fill from form object #}
+        selectedProvince: '{{ form.province | escape }}', {# Pre-fill from form object #}
+        provinces: [],
+        showProvince: false,
+
+        init() {
+            // Initialize country and province based on form data or default
+            const initialCountry = this.$refs.countrySelect.dataset.default || '{{ form.country | escape }}';
+            const initialProvince = this.$refs.provinceSelect.dataset.default || '{{ form.province | escape }}';
+
+            if (initialCountry) {
+                this.selectedCountry = initialCountry;
+                this.updateProvinces(); // Call once to populate initial provinces
+                if (initialProvince) {
+                    this.selectedProvince = initialProvince;
+                }
+            } else if (this.allCountries.length > 0) {
+                // If no initial country from form, default to the first in the list
+                this.selectedCountry = this.allCountries[0].name;
+                this.updateProvinces();
+            }
+        },
+
+        updateProvinces() {
+            const countryData = this.allCountries.find(c => c.name === this.selectedCountry);
+            if (countryData && countryData.provinces && countryData.provinces.length > 0) {
+                this.provinces = countryData.provinces;
+                this.showProvince = true;
+                // If the previously selected province is not in the new list, clear it
+                if (!this.provinces.some(p => p.name === this.selectedProvince)) {
+                    this.selectedProvince = '';
+                }
+            } else {
+                this.provinces = [];
+                this.showProvince = false;
+                this.selectedProvince = ''; // Clear province if no provinces
+            }
+        }
+    }
+  "
+  class="w-full"
+>
+  {% comment %} Success Message {% endcomment %}
+  {% if form.posted_successfully? %}
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md relative mb-6" role="alert">
+      <strong class="font-bold">Success!</strong>
+      <span class="block sm:inline">Address updated successfully.</span>
+    </div>
+  {% endif %}
+
+  {% comment %} Error Messages {% endcomment %}
+  {% if form.errors %}
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md relative mb-6" role="alert">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline">Please correct the following issues:</span>
+      <ul class="mt-2 list-disc list-inside">
+        {% for error in form.errors %}
+          <li>
+            <span class="font-semibold">{{ error | remove: 'address.' | replace: '_', ' ' | capitalize }}:</span>
+            {{ form.errors.messages[error] }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="address_first_name_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+        >First Name</label
+      >
+      <input
+        type="text"
+        id="address_first_name_{{ form_id }}"
+        name="address[first_name]"
+        value="{{ form.first_name }}"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        required
+        aria-required="true"
+      >
+    </div>
+
+    <div>
+      <label for="address_last_name_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+        >Last Name</label
+      >
+      <input
+        type="text"
+        id="address_last_name_{{ form_id }}"
+        name="address[last_name]"
+        value="{{ form.last_name }}"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        required
+        aria-required="true"
+      >
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <label for="address_company_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+      >Company (optional)</label
+    >
+    <input
+      type="text"
+      id="address_company_{{ form_id }}"
+      name="address[company]"
+      value="{{ form.company }}"
+      class="
+        mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+        focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+      "
+    >
+  </div>
+
+  <div class="mt-6">
+    <label for="address_address1_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+      >Address Line 1</label
+    >
+    <input
+      type="text"
+      id="address_address1_{{ form_id }}"
+      name="address[address1]"
+      value="{{ form.address1 }}"
+      class="
+        mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+        focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+      "
+      required
+      aria-required="true"
+    >
+  </div>
+
+  <div class="mt-6">
+    <label for="address_address2_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+      >Address Line 2 (optional)</label
+    >
+    <input
+      type="text"
+      id="address_address2_{{ form_id }}"
+      name="address[address2]"
+      value="{{ form.address2 }}"
+      class="
+        mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+        focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+      "
+    >
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div>
+      <label for="address_city_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2">City</label>
+      <input
+        type="text"
+        id="address_city_{{ form_id }}"
+        name="address[city]"
+        value="{{ form.city }}"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        required
+        aria-required="true"
+      >
+    </div>
+    <div>
+      <label for="address_country_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2">Country</label>
+      <select
+        id="address_country_{{ form_id }}"
+        name="address[country]"
+        x-ref="countrySelect"
+        x-model="selectedCountry"
+        @change="updateProvinces()"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        required
+        aria-required="true"
+      >
+        <option value="">Select Country</option>
+        <template x-for="country in allCountries" :key="country.name">
+          <option :value="country.name" x-text="country.name"></option>
+        </template>
+      </select>
+    </div>
+    <div x-show="showProvince">
+      {# Conditionally show province field #}
+      <label for="address_province_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+        >State/Province</label
+      >
+      <select
+        id="address_province_{{ form_id }}"
+        name="address[province]"
+        x-ref="provinceSelect"
+        x-model="selectedProvince"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        :required="showProvince"
+        {#
+        Required
+        only
+        if
+        visible
+        #}
+        aria-required="true"
+      >
+        <option value="">Select Province</option>
+        <template x-for="province in provinces" :key="province.name">
+          <option :value="province.name" x-text="province.name"></option>
+        </template>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div>
+      <label for="address_zip_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+        >Zip/Postal Code</label
+      >
+      <input
+        type="text"
+        id="address_zip_{{ form_id }}"
+        name="address[zip]"
+        value="{{ form.zip }}"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+        required
+        aria-required="true"
+      >
+    </div>
+    <div>
+      <label for="address_phone_{{ form_id }}" class="block text-sm font-semibold text-gray-700 mb-2"
+        >Phone Number (optional)</label
+      >
+      <input
+        type="tel"
+        id="address_phone_{{ form_id }}"
+        name="address[phone]"
+        value="{{ form.phone }}"
+        class="
+          mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400
+          focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out sm:text-base
+        "
+      >
+    </div>
+  </div>
+
+  <div class="mt-8 flex items-center">
+    <input
+      type="checkbox"
+      id="address_default_{{ form_id }}"
+      name="address[default]"
+      value="true"
+      {% if address_object.id == customer.default_address.id %}
+        checked="checked"
+      {% endif %}
+      {#
+      Check
+      if
+      current
+      address
+      is
+      default
+      #}
+      class="h-5 w-5 text-blue-600 border-gray-300 rounded-sm focus:ring-blue-500"
+    >
+    <label for="address_default_{{ form_id }}" class="ml-2 block text-base text-gray-900 font-medium"
+      >Set as default address</label
+    >
+  </div>
+
+  <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+    <button
+      type="submit"
+      class="
+        flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600
+        hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 ease-in-out
+      "
+    >
+      {% if submit_text %}{{ submit_text }}{% else %}Submit{% endif %}
+    </button>
+    {% if cancel_url %}
+      <a
+        href="{{ cancel_url }}"
+        class="
+          flex-1 inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white
+          hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in-out
+        "
+      >
+        Cancel
+      </a>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{% comment %} snippets/account-sidebar.liquid {% endcomment %}
+<div class="lg:w-1/4">
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <div class="flex items-center space-x-4 mb-6">
+      <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-xl font-bold">
+        {{ customer.first_name | slice: 0 | upcase -}}
+        {{- customer.last_name | slice: 0 | upcase }}
+      </div>
+      <div>
+        <h3 class="font-bold">{{ customer.name }}</h3>
+        <p class="text-sm text-gray-600">Member since {{ customer.created_at | date: '%Y' }}</p>
+      </div>
+    </div>
+
+    <nav class="space-y-2">
+      <a
+        href="{{ routes.account_url }}"
+        class="block px-4 py-2 {% if request.path == routes.account_url %}bg-blue-50 text-primary font-medium{% else %}hover:bg-gray-100{% endif %} rounded-lg"
+      >
+        Dashboard
+      </a>
+      <a
+        href="{{ routes.account_addresses_url }}"
+        class="block px-4 py-2 {% if request.path == routes.account_addresses_url %}bg-blue-50 text-primary font-medium{% else %}hover:bg-gray-100{% endif %} rounded-lg"
+      >
+        Addresses
+      </a>
+      <a href="{{ routes.account_logout_url }}" class="block px-4 py-2 hover:bg-gray-100 rounded-lg text-red-500">
+        Logout
+      </a>
+    </nav>
+  </div>
+</div>

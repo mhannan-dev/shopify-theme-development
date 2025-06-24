@@ -1,0 +1,246 @@
+{% comment %}
+  Address management section
+{% endcomment %}
+
+{% assign page_title = 'My Address' %}
+{% layout 'theme' %}
+
+<section class="container mx-auto px-6 py-16" id="account-page">
+  <h1 class="text-3xl font-bold mb-8">My Account</h1>
+
+  <div class="flex flex-col lg:flex-row gap-8">
+    {% render 'account-sidebar' %}
+
+    <!-- Main Content -->
+    <div class="lg:w-3/4">
+      <div class="bg-white rounded-lg p-6">
+        {% assign address = customer.addresses.first %}
+        <!-- Address Form Section -->
+        <div x-data="{ showAddressForm: true }">
+          <!-- Success Message -->
+          {% if form.posted_successfully? %}
+            <div
+              class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md mb-6"
+              x-show="showAddressForm"
+              x-transition
+              x-data="{ show: true }"
+              x-init="setTimeout(() => show = false, 3000)"
+              x-show="show"
+            >
+              Address updated successfully
+            </div>
+          {% endif %}
+
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-xl font-semibold">Update address</h2>
+              <button @click="showAddressForm = !showAddressForm" class="text-gray-500 hover:text-gray-700">
+                <span x-text="showAddressForm ? 'Hide' : 'Show'"></span> Form
+              </button>
+            </div>
+
+            {% form 'customer_address', address %}
+              <div class="space-y-4" x-show="showAddressForm" x-transition>
+                <!-- First Row - Name Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="AddressFirstName" class="block text-sm font-medium text-gray-700 mb-1"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      id="AddressFirstName"
+                      name="address[first_name]"
+                      value="{{ address.first_name }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+
+                  <div>
+                    <label for="AddressLastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                    <input
+                      type="text"
+                      id="AddressLastName"
+                      name="address[last_name]"
+                      value="{{ address.last_name }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+                </div>
+
+                <!-- Company Field -->
+                <div>
+                  <label for="AddressCompany" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                  <input
+                    type="text"
+                    id="AddressCompany"
+                    name="address[company]"
+                    value="{{ address.company }}"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    x-bind:disabled="!showAddressForm"
+                  >
+                </div>
+
+                <!-- Address Fields -->
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
+                    <label for="AddressAddress1" class="block text-sm font-medium text-gray-700 mb-1">Address 1</label>
+                    <input
+                      type="text"
+                      id="AddressAddress1"
+                      name="address[address1]"
+                      value="{{ address.address1 }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+
+                  <div>
+                    <label for="AddressAddress2" class="block text-sm font-medium text-gray-700 mb-1">Address 2</label>
+                    <input
+                      type="text"
+                      id="AddressAddress2"
+                      name="address[address2]"
+                      value="{{ address.address2 }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+                </div>
+
+                <!-- City, Country, Province -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label for="AddressCity" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <input
+                      type="text"
+                      id="AddressCity"
+                      name="address[city]"
+                      value="{{ address.city }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+
+                  <div>
+                    <label for="AddressCountry" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                    <select
+                      id="AddressCountry"
+                      name="address[country]"
+                      data-default="{{ address.country }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                      x-ref="countrySelect"
+                    >
+                      {{ all_country_option_tags }}
+                    </select>
+                  </div>
+
+                  <div id="AddressProvinceContainer" style="display: none;">
+                    <label for="AddressProvince" class="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                    <select
+                      id="AddressProvince"
+                      name="address[province]"
+                      data-default="{{ address.province }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                      x-ref="provinceSelect"
+                    ></select>
+                  </div>
+                </div>
+
+                <!-- ZIP and Phone -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="AddressZip" class="block text-sm font-medium text-gray-700 mb-1">ZIP/Postal Code</label>
+                    <input
+                      type="text"
+                      id="AddressZip"
+                      name="address[zip]"
+                      value="{{ address.zip }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+
+                  <div>
+                    <label for="AddressPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <input
+                      type="tel"
+                      id="AddressPhone"
+                      name="address[phone]"
+                      value="{{ address.phone }}"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      x-bind:disabled="!showAddressForm"
+                    >
+                  </div>
+                </div>
+
+                <!-- Default Address Checkbox -->
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="address_default_address"
+                    name="address[default]"
+                    value="1"
+                    class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    x-bind:disabled="!showAddressForm"
+                    {% if address.default %}
+                      checked
+                    {% endif %}
+                  >
+                  <label for="address_default_address" class="ml-2 text-sm text-gray-700">Set as default address</label>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="mt-6 flex space-x-3">
+                  <button
+                    type="submit"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                    x-bind:disabled="!showAddressForm"
+                  >
+                    Update Address
+                  </button>
+                  <button
+                    type="button"
+                    class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                    @click="showAddressForm = false"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize country/province selector
+    const countrySelect = document.getElementById('AddressCountry');
+    const provinceContainer = document.getElementById('AddressProvinceContainer');
+    const provinceSelect = document.getElementById('AddressProvince');
+
+    if (countrySelect && provinceContainer && provinceSelect) {
+      new Shopify.CountryProvinceSelector('AddressCountry', 'AddressProvince', {
+        hideElement: 'AddressProvinceContainer',
+      });
+    }
+
+    // Alpine.js component for address management
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('addressForm', () => ({
+        showAddressForm: true,
+        init() {
+          // You can add any initialization logic here
+        },
+      }));
+    });
+  });
+</script>
