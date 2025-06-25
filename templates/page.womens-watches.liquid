@@ -1,1 +1,259 @@
 {% layout 'theme' %}
+<section class="relative bg-gray-800 text-white">
+  <img
+    src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+    alt="Men's Watches Collection"
+    class="w-full h-80 object-cover opacity-90"
+    width="1920"
+    height="800"
+    loading="lazy"
+  >
+  <div
+    class="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-50"
+  >
+    <div class="px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Women's Watches</h1>
+      <p class="text-xl">Discover precision and power. The perfect timepiece for every man.</p>
+    </div>
+  </div>
+</section>
+
+<nav class="container mx-auto px-6 py-4 text-gray-600">
+  <ol class="flex items-center space-x-2">
+    <li><a href="index.html" class="hover:underline">Home</a></li>
+    <li><i class="fas fa-chevron-right text-xs"></i></li>
+    <li class="font-semibold text-primary">Men's Watches</li>
+  </ol>
+</nav>
+
+<section class="container mx-auto px-6 py-12">
+  <div class="flex flex-col md:flex-row gap-8">
+    {% render 'page-aside' %}
+
+    <div class="w-full md:w-3/4">
+      <div class="flex justify-between items-center mb-6">
+        <p class="text-gray-700">Showing 1-9 of 20 results</p>
+        <div class="flex items-center space-x-2">
+          <label for="sort-by-mens" class="text-gray-700">Sort by:</label>
+          <select
+            id="sort-by-mens"
+            class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value="latest">Latest</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1533139502938-2340e32e8549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="The Executive Chrono"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">The Executive Chrono</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">Sophisticated automatic movement</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳28,000</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1547926129-9e8c383e2f5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Sport Diver Pro"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">Sport Diver Pro</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">100m water resistance, robust build</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳16,500</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1587836176162-8695191c9889?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Classic Leather Automatic"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">Classic Leather Automatic</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">Timeless elegance, genuine leather</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳19,999</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1596700074218-a68133568c0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Titanium Pilot Watch"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">Titanium Pilot Watch</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">Lightweight and durable</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳32,000</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1587836176162-8695191c9889?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Digital Sport"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">Digital Sport Watch</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">Multifunctional and rugged</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳8,900</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href="#" class="block relative group">
+            <img
+              src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Luxury Tourbillon"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              height="200"
+              width="200"
+            >
+          </a>
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2 truncate">
+              <a href="#" class="hover:text-primary">Luxury Tourbillon</a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">Hand-crafted, limited edition</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">৳55,000</span>
+              <button
+                class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                title="Add to Wishlist"
+              >
+                <i class="far fa-heart"></i>
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-12 space-x-2">
+        <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">1</a>
+        <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg transition-colors">2</a>
+        <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">3</a>
+        <a href="#" class="bg-gray-200 hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors"
+          >Next <i class="fas fa-arrow-right ml-2"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</section>
