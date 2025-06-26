@@ -6,6 +6,11 @@ shopify theme dev
 
 shopify theme push
 
+shopify logout
+shopify login --store mhshopdev.myshopify.com
+
+
+
 shopify theme pull
 
 shopify theme push --unpublished --json

@@ -1,0 +1,65 @@
+<section
+  class="relative text-white h-[500px]"
+  style="background-color: {{ section.settings.background_color | default: '#DCDADB' }};"
+>
+  <div class="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-40">
+    <div class="px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        {{ section.settings.heading }}
+      </h1>
+      <p class="text-xl mb-8">
+        {{ section.settings.subheading }}
+      </p>
+      <a
+        href="{{ section.settings.button_link }}"
+        class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition inline-block"
+      >
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Timeless Elegance"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Premium watches crafted for perfection"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Discover Collections"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
