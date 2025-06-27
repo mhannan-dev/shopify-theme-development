@@ -1,5 +1,3 @@
-Of course! Here’s a product-style description you could use for a **free watch-selling Shopify theme** developed with Liquid and Tailwind CSS:
-
 **Free Watch Selling Shopify Theme – Crafted with Liquid & Tailwind CSS**
 -------------------------------------------------------------------------
 
