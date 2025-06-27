@@ -1,97 +1,143 @@
-<!-- Testimonials -->
 <section class="bg-gray-50 py-16">
   <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold mb-12 text-center">What Watch Enthusiasts Say</h2>
+    {% if section.blocks.size > 0 %}
+      <h2 class="text-3xl font-semibold mb-12 text-center">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div
-        class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-      >
-        <div class="flex items-center mb-4">
-          <div class="text-yellow-400 mr-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+      {% for block in section.blocks %}
+        <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              {% assign stars = block.settings.stars | plus: 0 %}
+              {% for i in (1..stars) %}
+                <i class="fas fa-star"></i>
+              {% endfor %}
+              {% if block.settings.half_star %}
+                <i class="fas fa-star-half-alt"></i>
+              {% endif %}
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4 italic">"{{ block.settings.testimonial }}"</p>
+          <div class="flex items-center">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 80 }}"
+                alt="{{ block.settings.name }}"
+                class="w-10 h-10 rounded-full mr-3"
+                width="40"
+                height="40"
+              >
+            {% endif %}
+            <div>
+              <h4 class="font-semibold">{{ block.settings.name }}</h4>
+              <p class="text-sm text-gray-500">{{ block.settings.designation }}</p>
+            </div>
           </div>
         </div>
-        <p class="text-gray-600 mb-4 italic">
-          "The Chronograph Master exceeded all my expectations. The craftsmanship is exceptional and it keeps perfect
-          time. Worth every penny!"
-        </p>
-        <div class="flex items-center">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Customer"
-            class="w-10 h-10 rounded-full mr-3"
-          >
-          <div>
-            <h4 class="font-semibold">Ahmed Rahman</h4>
-            <p class="text-sm text-gray-500">Collector since 2015</p>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-      >
-        <div class="flex items-center mb-4">
-          <div class="text-yellow-400 mr-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-4 italic">
-          "I've purchased three watches from TimeCrafters and each one has been flawless. Their customer service is
-          outstanding."
-        </p>
-        <div class="flex items-center">
-          <img
-            src="https://randomuser.me/api/portraits/women/44.jpg"
-            alt="Customer"
-            class="w-10 h-10 rounded-full mr-3"
-          >
-          <div>
-            <h4 class="font-semibold">Nusrat Jahan</h4>
-            <p class="text-sm text-gray-500">Frequent Customer</p>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-      >
-        <div class="flex items-center mb-4">
-          <div class="text-yellow-400 mr-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-4 italic">
-          "The packaging alone shows how much they care. The watch arrived in a beautiful box, making it perfect for
-          gifting."
-        </p>
-        <div class="flex items-center">
-          <img
-            src="https://randomuser.me/api/portraits/men/75.jpg"
-            alt="Customer"
-            class="w-10 h-10 rounded-full mr-3"
-            width="100%" 
-            height="auto"
-          >
-          <div>
-            <h4 class="font-semibold">Kamal Hossain</h4>
-            <p class="text-sm text-gray-500">First-time Buyer</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What Watch Enthusiasts Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Customer Title",
+          "default": "Frequent Buyer"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial Text",
+          "default": "This is a sample testimonial."
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star Rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "checkbox",
+          "id": "half_star",
+          "label": "Include Half Star",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Ahmed Rahman",
+            "designation": "Collector since 2015",
+            "testimonial": "The Chronograph Master exceeded all my expectations. The craftsmanship is exceptional and it keeps perfect time. Worth every penny!",
+            "stars": 5,
+            "image": ""
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Nusrat Jahan",
+            "designation": "Frequent Customer",
+            "testimonial": "I've purchased three watches from TimeCrafters and each one has been flawless. Their customer service is outstanding.",
+            "stars": 5,
+            "image": ""
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Kamal Hossain",
+            "designation": "First-time Buyer",
+            "testimonial": "The packaging alone shows how much they care. The watch arrived in a beautiful box, making it perfect for gifting.",
+            "stars": 4,
+            "half_star": true,
+            "image": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
